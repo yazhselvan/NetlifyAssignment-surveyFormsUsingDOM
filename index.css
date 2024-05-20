@@ -1,0 +1,29 @@
+.survey-form{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.mandatory{
+    color: red;
+}
+
+.form-check{
+    padding-right: 75px;
+}
+
+button{
+    margin-right: 30px;
+}
+
+.custom-fields{
+    margin-top: 10px;
+}
+
+table{
+    margin-top: 50px;
+}
+
+h1, p {
+    margin-top: 10px;
+    text-align: center;
+}
