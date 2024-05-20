@@ -10,7 +10,7 @@ function createInputFields(){
 
     const form = document.createElement('form');
     form.className = 'survey-form';
-    form.id = 'survey-form';
+    form.id = 'form';
 
     const formHolder = document.createElement('div');
     formHolder.className = "row form-group";
@@ -79,28 +79,14 @@ function createInputFields(){
 
     addresOne_label.setAttribute("for", "address1");
     addresOne_label.innerHTML = "Address Line 1 <span class = mandatory>*</span>";
-    const inputTag_AddressLineOne = document.createElement('input');
+    const inputTag_AddressLineOne = document.createElement('textarea');
     inputTag_AddressLineOne.className = 'form-control';
-    inputTag_AddressLineOne.id = 'Address1';
+    inputTag_AddressLineOne.id = 'address';
     inputTag_AddressLineOne.required = 'Name input field should be required '
     inputTag_AddressLineOne.setAttribute("placeHolder", "1234 Main St")
     inputTag_AddressLineOne.setAttribute("aria-label", "Address Line 1")
     addressOneColumn.append(addresOne_label, inputTag_AddressLineOne)
 
-    //Address2
-    const addressTwoColumn = document.createElement('div');
-    addressTwoColumn.className = 'custom-fields col-12';
-
-    const addresTwo_label = document.createElement('label');
-    addresTwo_label.className = 'form-label';
-    addresTwo_label.setAttribute("for", "address2");
-    addresTwo_label.innerText = "Address Line 2";
-    const inputTag_AddressLineTwo = document.createElement('input');
-    inputTag_AddressLineTwo.className = 'form-control';
-    inputTag_AddressLineTwo.id = 'Address2';
-    inputTag_AddressLineTwo.setAttribute("placeHolder", "Apartment, studio or floor")
-    inputTag_AddressLineTwo.setAttribute("aria-label", "Address Line 2")
-    addressTwoColumn.append(addresTwo_label, inputTag_AddressLineTwo)
 
     //city
     const cityColumn = document.createElement("div");
@@ -291,14 +277,14 @@ function createInputFields(){
     buttonsColumn.append(submitButton, resetButton);
 
     //Appending Details
-    formHolder.append(firstNameColumn, lastNameColumn, emailColumn, addressOneColumn, addressTwoColumn, 
+    formHolder.append(firstNameColumn, lastNameColumn, emailColumn, addressOneColumn, 
         cityColumn, stateColumn, pincodeColumn, countryColumn, genderColumn, foodChoiceColumn, CommentsColumn, buttonsColumn);
     document.body.append(form);
 }
 
 function createTableHeaders(){
     const tableHolder = document.createElement('div');
-    tableHolder.className = "table-responsive";
+    tableHolder.className = "table";
 
 
     const masterTable = document.createElement("table");
@@ -368,15 +354,14 @@ function createTableHeaders(){
 }
 
 function updateTableData(){
-    document.getElementById('survey-form').addEventListener('submit', function(event){
+    document.getElementById('form').addEventListener('submit', function(event){
         event.preventDefault();
-        createTableHeaders();
+        
 
         const firstName = document.getElementById('first-name').value;
         const lastName = document.getElementById('last-name').value;
         const email =  document.getElementById('email').value;
-        const address1 = document.getElementById('Address1').value;
-        const address2 = document.getElementById('Address2').value;
+        const address = document.getElementById('address').value;
         const city = document.getElementById('City').value;
         const state = document.getElementById('state-dropdown').value;
         const pincode = document.getElementById('pincode').value;
@@ -407,7 +392,7 @@ function updateTableData(){
         firstNameCell.textContent = firstName;
         lastNameCell.textContent = lastName;
         emailCell.textContent = email;
-        addressCell.textContent = `${address1}, ${address2}, ${city}`;
+        addressCell.textContent = `${address}, ${city}`;
         pincodeCell.textContent = pincode;
         genderCell.textContent = gender;
         foodChoicesCell.textContent = foodChoices.join(', ');
@@ -425,8 +410,8 @@ function updateTableData(){
         document.getElementById('first-name').value = '';
         document.getElementById('last-name').value = '';
         document.getElementById('email').value = '';
-        document.getElementById('Address1').value = '';
-        document.getElementById('Address2').value = '';
+        document.getElementById('address').value = '';
+
         document.getElementById('City').value = '';
         document.getElementById('state-dropdown').value = '';
         document.getElementById('pincode').value = '';
@@ -448,6 +433,6 @@ function resetTableData(){
 }
 
 createInputFields();
-
+createTableHeaders();
 updateTableData();
 resetTableData();
