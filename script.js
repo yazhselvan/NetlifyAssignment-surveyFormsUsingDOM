@@ -426,7 +426,7 @@ function updateTableData(){
 
 function resetTableData(){
     document.getElementById('reset').addEventListener('click', function() {
-        const tableBody = document.getElementById('table');
+        const tableBody = document.getElementById('table').querySelector('tbody');
 
         tableBody.innerHTML = '';
     });
